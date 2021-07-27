@@ -38,4 +38,14 @@ test('counter display starts at 0', () => {
   expect(count).toBe('0');
 });
 
-test('clicking button increments counter display', () => {});
+test('clicking button increments counter display', () => {
+  const wrapper = setup();
+  const button = findByTestAttr(wrapper, 'increment-button');
+
+  // 버튼 클릭했을 때
+  button.simulate('click');
+
+  // 디스플레이를 찾고, 숫자가 증가하는지 테스트
+  const count = findByTestAttr(wrapper, 'count').text();
+  expect(count).toBe('1');
+});
