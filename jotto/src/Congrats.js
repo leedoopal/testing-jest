@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 /**
  * 축하하는 메시지를 위한 함수형 리액트 컴포넌트
@@ -17,7 +18,11 @@ const Congrats = ({ success }) => {
       </div>
     );
   } else {
-    return <div data-test="component-congrats">다시 한번 찾아보세요</div>;
+    return (
+      <div data-test="component-congrats">
+        <span data-test="congrats-message"></span>
+      </div>
+    );
   }
 };
 
