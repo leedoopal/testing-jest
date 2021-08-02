@@ -9,6 +9,28 @@ const GuessWords = (props) => {
         시크릿 단어를 다시 추측해보세요!
       </span>
     );
+  } else {
+    const guessedWordsRows = props.guessedWords.map((word, index) => (
+      <tr data-test="guessed-word" key={index}>
+        <td>{word.guessedWords}</td>
+        <td>{word.letterMatchCount}</td>
+      </tr>
+    ));
+
+    contents = (
+      <div data-test="guessed-words">
+        <h3>추측한 단어들</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Guess</th>
+              <th>Matching Letters</th>
+            </tr>
+          </thead>
+          <tbody>{guessedWordsRows}</tbody>
+        </table>
+      </div>
+    );
   }
   return <div data-test="component-guessed-words">{contents}</div>;
 };
