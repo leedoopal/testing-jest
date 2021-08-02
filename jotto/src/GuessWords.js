@@ -5,6 +5,13 @@ const GuessWords = (props) => {
   return <div></div>;
 };
 
-GuessWords.propTypes = {};
+GuessWords.propTypes = {
+  guessedWords: PropTypes.arrayOf(
+    PropTypes.shape({
+      guessedWords: PropTypes.string.isRequired,
+      letterMatchCount: PropTypes.number.isRequired,
+    }),
+  ),
+};
 
 export default GuessWords;
