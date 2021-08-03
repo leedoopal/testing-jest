@@ -4,6 +4,13 @@ import { shallow } from 'enzyme';
 import { checkProps, findByTestAttr } from '../test/testUtils';
 import Input from './Input';
 
+// useState를 import 해왔을 때 전체 mock 모듈 할당을 위해
+const mockSetCurrentGuess = jest.fn();
+jest.mock('react', () => ({
+  ...jest.requireActual('react'),
+  useState: (initialState) => [initialState, mockSetCurrentGuess],
+}));
+
 /**
  * app component를 위한 setup function
  * @returns {ShallowWrapper}
@@ -25,7 +32,7 @@ test('does not throw warning with expected props', () => {
 describe('state controlled input field', () => {
   test('state updates with value of input box upon change', () => {
     const mockSetCurrentGuess = jest.fn();
-    React.useState = jest.fn(() => ['', mockSetCurrentGuess]);
+    React.useState = () => ['', mockSetCurrentGuess];
 
     const wrapper = setup();
     const inputBox = findByTestAttr(wrapper, 'input-box');
