@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 
 import Congrats from './Congrats';
@@ -6,10 +5,12 @@ import GuessWords from './GuessWords';
 
 function App() {
   return (
-    <div className="App">
+    <div className="container">
       <h1>Jotto</h1>
       <Congrats success={false} />
-      <GuessWords guessedWords={[]} />
+      <GuessWords
+        guessedWords={[{ guessedWords: 'train', letterMatchCount: 3 }]}
+      />
     </div>
   );
 }

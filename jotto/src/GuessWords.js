@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const GuessWords = (props) => {
+const GuessWords = ({ guessedWords }) => {
   let contents;
-  if (props.guessWords.length === 0) {
+  if (guessedWords?.length === 0) {
     contents = (
       <span data-test="guess-instructions">
         시크릿 단어를 다시 추측해보세요!
       </span>
     );
   } else {
-    const guessedWordsRows = props.guessedWords.map((word, index) => (
-      <tr data-test="guessed-word" key={index}>
+    const guessedWordsRows = guessedWords?.map((word) => (
+      <tr data-test="guessed-word" key={word.guessedWords}>
         <td>{word.guessedWords}</td>
         <td>{word.letterMatchCount}</td>
       </tr>
@@ -20,8 +20,8 @@ const GuessWords = (props) => {
     contents = (
       <div data-test="guessed-words">
         <h3>추측한 단어들</h3>
-        <table>
-          <thead>
+        <table className="table table-sm">
+          <thead className="thead-light">
             <tr>
               <th>Guess</th>
               <th>Matching Letters</th>
