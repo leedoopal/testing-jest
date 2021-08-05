@@ -1,6 +1,9 @@
 import { shallow } from 'enzyme';
 import { findByTestAttr } from '../test/testUtils';
 import App from './App';
+import { getSecretWord as mockGetSecretWord } from './actions';
+
+jest.mock('./actions');
 
 /**
  * Setup function for App component
